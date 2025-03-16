@@ -1,0 +1,6 @@
+{% for whisper in whispers %}
+  <div class="whisper">
+    <p>{{ whisper.content }}</p>
+    <small>Posted by: {{ whisper.display_name }}</small>
+  </div>
+{% endfor %}

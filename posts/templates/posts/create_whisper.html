@@ -1,0 +1,12 @@
+{% extends 'posts/feed.html' %}
+
+{% block content %}
+<div class="create-whisper">
+    <h2>Create New Whisper</h2>
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="content" rows="4" required></textarea>
+        <button type="submit">Post Anonymously</button>
+    </form>
+</div>
+{% endblock %}
