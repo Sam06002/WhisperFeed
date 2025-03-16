@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from users.models import AnonymousUser
 from django.contrib.auth import login
+from .models import Whisper
 
 def feed(request):
     whispers = Whisper.objects.all().order_by('-created_at')
