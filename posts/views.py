@@ -2,6 +2,10 @@ from django.shortcuts import render, redirect
 from users.models import AnonymousUser
 from django.contrib.auth import login
 
+def feed(request):
+    whispers = Whisper.objects.all().order_by('-created_at')
+    return render(request, 'posts/feed.html', {'whispers': whispers})
+
 def register(request):
     if request.method == 'POST':
         custom_username = request.POST.get('custom_username')
