@@ -3,6 +3,18 @@ from users.models import AnonymousUser
 from django.contrib.auth import login
 from .models import Whisper
 
+def create_whisper(request):
+    if request.method == 'POST':
+        form = WhisperForm(request.POST)
+        if form.is_valid():
+            whisper = form.save(commit=False)
+            whisper.user = request.user
+            whisper.save()
+            return redirect('feed')
+    else:
+        form = WhisperForm()
+    return render(request, 'posts/create_whisper.html', {'form': form})
+
 def feed(request):
     whispers = Whisper.objects.all().order_by('-created_at')
     return render(request, 'posts/feed.html', {'whispers': whispers})
