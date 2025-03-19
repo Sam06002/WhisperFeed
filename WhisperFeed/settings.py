@@ -54,8 +54,8 @@ TEMPLATES = [
 WSGI_APPLICATION = 'WhisperFeed.wsgi.application'
 
 DATABASES = {
-    'default': dj_database_url.parse(
-        os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3')
+    'default': dj_database_url.config(
+        default=os.environ.get('postgresql://whisperfeed_db_user:vVtYK1rRSd1fj9SYAmH0zYrChjtK9ZMY@dpg-cvdag9lumphs73eao72g-a.oregon-postgres.render.com/whisperfeed_db')
     )
 }
 
