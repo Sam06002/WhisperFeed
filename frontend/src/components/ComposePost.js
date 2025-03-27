@@ -1,77 +1,66 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function ComposePost() {
   const [content, setContent] = useState('');
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isAnonymous, setIsAnonymous] = useState(true);
   
-  const handleFocus = () => {
-    setIsExpanded(true);
-  };
-  
-  const handleSubmit = () => {
-    if (content.trim()) {
-      console.log('Post submitted:', content);
+  const handlePost = async () => {
+    if (!content.trim()) return;
+    
+    try {
+      // Add API call to create post
+      console.log('Posting:', { content, isAnonymous });
+      
+      // Reset form after successful post
       setContent('');
-      setIsExpanded(false);
+    } catch (error) {
+      console.error('Error posting:', error);
     }
   };
   
   return (
-    <div className="border-b border-gray-800 p-4">
-      <div className="flex">
-        {/* User Avatar */}
-        <div className="mr-4">
-          <div className="h-12 w-12 rounded-full bg-gray-700 flex items-center justify-center text-white font-bold">
-            U
+    <div className="p-4 bg-[#252526] rounded-lg shadow-lg">
+      <div className="flex items-start">
+        <div className="mr-3">
+          <div className="h-10 w-10 rounded-full bg-[#333] flex items-center justify-center text-white font-bold">
+            A
           </div>
         </div>
-        
-        {/* Compose Area */}
-        <div className="flex-1">
+        <div className="flex-grow">
           <textarea
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            onFocus={handleFocus}
             placeholder="What's happening?"
-            className="w-full bg-transparent text-white text-xl placeholder-gray-500 border-none focus:outline-none resize-none"
-            rows={isExpanded ? 4 : 2}
+            className="w-full p-3 bg-transparent text-white placeholder-gray-500 resize-none border-none focus:outline-none text-xl"
+            rows="3"
           />
           
-          {isExpanded && (
-            <div className="flex items-center justify-between mt-3 pt-3 border-t border-gray-800">
-              {/* Media Icons */}
-              <div className="flex space-x-4 text-[#1DA1F2]">
-                <button className="hover:bg-blue-900/20 p-2 rounded-full">
-                  📷
-                </button>
-                <button className="hover:bg-blue-900/20 p-2 rounded-full">
-                  📊
-                </button>
-                <button className="hover:bg-blue-900/20 p-2 rounded-full">
-                  😀
-                </button>
-                <button className="hover:bg-blue-900/20 p-2 rounded-full">
-                  📅
-                </button>
-                <button className="hover:bg-blue-900/20 p-2 rounded-full">
-                  📍
-                </button>
+          <div className="border-t border-[#555] pt-3 mt-2 flex items-center justify-between">
+            <label className="flex items-center text-[#1DA1F2] cursor-pointer">
+              <input
+                type="checkbox"
+                checked={isAnonymous}
+                onChange={() => setIsAnonymous(!isAnonymous)}
+                className="sr-only"
+              />
+              <div className={`w-10 h-5 ${isAnonymous ? 'bg-[#1DA1F2]' : 'bg-[#555]'} rounded-full mr-2 transition-colors relative`}>
+                <div className={`absolute w-4 h-4 rounded-full bg-white transition-transform top-0.5 ${isAnonymous ? 'translate-x-5' : 'translate-x-0.5'}`}></div>
               </div>
-              
-              {/* Post Button */}
-              <button
-                onClick={handleSubmit}
-                disabled={!content.trim()}
-                className={`px-4 py-1.5 rounded-full font-bold text-white ${
-                  content.trim() 
-                    ? 'bg-[#1DA1F2] hover:bg-[#1a91da]' 
-                    : 'bg-[#1DA1F2]/50 cursor-not-allowed'
-                }`}
-              >
-                Post
-              </button>
-            </div>
-          )}
+              <span className="text-sm">Anonymous</span>
+            </label>
+            
+            <button
+              onClick={handlePost}
+              disabled={!content.trim()}
+              className={`py-2 px-4 rounded-full font-semibold ${
+                content.trim()
+                  ? 'bg-[#1DA1F2] text-white hover:bg-[#1A91DA]'
+                  : 'bg-[#1DA1F2]/50 text-gray-300 cursor-not-allowed'
+              } transition`}
+            >
+              Post
+            </button>
+          </div>
         </div>
       </div>
     </div>
