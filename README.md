@@ -1,15 +1,33 @@
 # WhisperFeed
 
-A modern social media platform built with Next.js, Express, and MongoDB, featuring a sleek X.com-inspired design.
+A modern social media platform built with Next.js, Express, and MongoDB, featuring a sleek X.com-inspired design. WhisperFeed focuses on anonymous expression and interaction, allowing users to share thoughts and connect without revealing their identity.
 
 ## Features
 
 - 🎨 Modern UI inspired by X.com
-- 🔐 User authentication (username/password)
-- 🌐 Social networking capabilities
+- 🔐 Anonymous user authentication (username/password only)
+- 🌐 Anonymous post sharing and interaction
+- 🔒 Privacy-focused design
 - 📱 Responsive design for all devices
 - 🔄 Real-time updates
 - 🐳 Docker containerization
+
+## Key Features
+
+### Anonymous Posting
+- Share thoughts and ideas without revealing your identity
+- Create posts with optional anonymity settings
+- Express freely without social pressure
+
+### Anonymous Interaction
+- Interact with posts through likes and comments
+- Connect with other users while maintaining privacy
+- Build meaningful connections without personal exposure
+
+### Privacy First
+- No email required for registration
+- Minimal personal information collection
+- User control over content visibility
 
 ## Tech Stack
 
@@ -78,12 +96,14 @@ npm run dev
 
 ## API Endpoints
 
-- `POST /api/auth/register` - Register a new user
+- `POST /api/auth/register` - Register a new user (username/password only)
 - `POST /api/auth/login` - Login user
-- `GET /api/posts` - Get all posts
-- `POST /api/posts` - Create a new post
+- `GET /api/posts` - Get all posts (with optional anonymity filters)
+- `POST /api/posts` - Create a new post (with anonymity options)
 - `PUT /api/posts/:id` - Update a post
 - `DELETE /api/posts/:id` - Delete a post
+- `POST /api/posts/:id/like` - Like a post anonymously
+- `POST /api/posts/:id/comment` - Comment on a post anonymously
 
 ## Contributing
 
