@@ -1,10 +1,10 @@
 # WhisperFeed
 
-A modern social media platform built with Next.js, Express, and MongoDB, featuring a sleek X.com-inspired design. WhisperFeed focuses on anonymous expression and interaction, allowing users to share thoughts and connect without revealing their identity.
+A modern social media platform built with Next.js, Express, and MongoDB, focusing on anonymous expression and interaction. WhisperFeed allows users to share thoughts and connect without revealing their identity.
 
 ## Features
 
-- 🎨 Modern UI inspired by X.com
+- 🎨 Modern and intuitive user interface
 - 🔐 Anonymous user authentication (username/password only)
 - 🌐 Anonymous post sharing and interaction
 - 🔒 Privacy-focused design
@@ -119,7 +119,6 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 ## Acknowledgments
 
-- Design inspiration from X.com
 - Next.js team for the amazing framework
 - MongoDB team for the database
 - Docker team for containerization 
